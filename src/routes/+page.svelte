@@ -43,7 +43,8 @@
 		posts1 = await fetchData();
 		// console.log(posts1);
 		jsonData = posts1.posts1;
-		console.log(jsonData);
+		// console.log(jsonData);
+		console.log('update');
 	}
 	// const posts = json1.data.swaps;
 	// console.log(posts);
@@ -162,16 +163,19 @@
 	}
 </script>
 
-<iframe
-	id="dextools-widget"
-	title="DEXTools Trading Chart"
-	width="800"
-	height="400"
-	src="https://www.dextools.io/widget-chart/en/arbitrum/pe-light/0xe2ddd33585b441b9245085588169f35108f85a6e?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
-/>
+<center>
+	<iframe
+		id="dextools-widget"
+		title="DEXTools Trading Chart"
+		width="800"
+		height="400"
+		src="https://www.dextools.io/widget-chart/en/arbitrum/pe-light/0xe2ddd33585b441b9245085588169f35108f85a6e?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
+	/>
+</center>
 
 <h1>Date & Wallet Address Search</h1>
-<button on:click={updateData}>Update Data</button>
+<!-- <p>(Remember To Update Data)</p> -->
+<button class="btn-update" on:click={updateData}>Update Data</button>
 <!-- console.log(jsonData); -->
 <!-- {JSON.stringify(jsonData)} -->
 <!-- {JSON.stringify(jsonData)} -->
@@ -575,5 +579,19 @@
 
 	iframe {
 		/* visibility: hidden; */
+	}
+	.btn-update {
+		/* background-color: #807e7e; */
+		width: 10vw;
+		max-width: 100px;
+		height: 5vh;
+		max-height: 40px;
+		margin: 0.5%;
+	}
+	.btn-update:hover {
+		background-color: #a1ff80;
+	}
+	button:hover {
+		background-color: #a1ff80;
 	}
 </style>
