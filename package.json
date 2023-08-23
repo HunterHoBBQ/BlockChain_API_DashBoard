@@ -1,0 +1,29 @@
+{
+	"name": "AFC-api1",
+	"version": "1.0.2",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/adapter-static": "^2.0.3",
+		"@sveltejs/kit": "^1.22.6",
+		"eslint": "^8.47.0",
+		"eslint-config-prettier": "^8.10.0",
+		"eslint-plugin-svelte": "^2.33.0",
+		"prettier": "^2.8.8",
+		"prettier-plugin-svelte": "^2.10.1",
+		"svelte": "^4.2.0",
+		"vite": "^4.4.9"
+	},
+	"type": "module",
+	"dependencies": {
+		"axios": "^1.4.0",
+		"csv-stringify": "^6.4.0"
+	}
+}
