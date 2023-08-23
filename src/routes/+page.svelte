@@ -1,8 +1,55 @@
 <script>
+	// import json1 from '$lib/swaps_1.json';
 	export let data;
-	const { posts } = data;
+	let { posts } = data;
+
+	$: posts1 = [];
+	$: jsonData;
+	let jsonData = posts;
+
+	async function fetchData() {
+		const res1 = await fetch(
+			'https://www.dextools.io/shared/data/swaps?chain=arbitrum&pair=0xe2ddd33585b441b9245085588169f35108f85a6e'
+		);
+		const contentType = res1.headers.get('content-type');
+		if (contentType.includes('text/html')) {
+			console.log('Data is HTML');
+			return {
+				posts1: [] // Replace with appropriate data
+			};
+		} else {
+			const data_1 = await res1.json();
+			const nextTimestamp = Number(data_1.data.next);
+
+			const res2 = await fetch(
+				`https://www.dextools.io/shared/data/swaps?chain=arbitrum&pair=0xe2ddd33585b441b9245085588169f35108f85a6e&ts=${nextTimestamp}&filter=true`
+			);
+			const data_2 = await res2.json();
+			const mergedSwaps = data_1.data.swaps.concat(data_2.data.swaps);
+			const uniqueData = mergedSwaps.reduce((uniqueItems, item) => {
+				const isDuplicate = uniqueItems.some((existingItem) => existingItem.id === item.id);
+				if (!isDuplicate) {
+					uniqueItems.push(item);
+				}
+				return uniqueItems;
+			}, []);
+			return {
+				posts1: uniqueData
+			};
+		}
+	}
+
+	async function updateData() {
+		posts1 = await fetchData();
+		// console.log(posts1);
+		jsonData = posts1.posts1;
+		console.log(jsonData);
+	}
+	// const posts = json1.data.swaps;
+	// console.log(posts);
 	const w = new Date();
-	const result = posts.reduce((a, c) => ({
+
+	const result = jsonData.reduce((a, c) => ({
 		amountToken: a.amountToken + c.amountToken,
 		amountETH: a.amountETH + c.amountETH,
 		amountRef: a.amountRef + c.amountRef,
@@ -18,8 +65,6 @@
 		visibleSwaps += 100; // Increase the number of visible swaps
 	}
 	const j = new Date('2023-12-31');
-
-	let jsonData = posts;
 
 	// search functionality is here
 	let filter = {
@@ -117,7 +162,16 @@
 	}
 </script>
 
+<iframe
+	id="dextools-widget"
+	title="DEXTools Trading Chart"
+	width="800"
+	height="400"
+	src="https://www.dextools.io/widget-chart/en/arbitrum/pe-light/0xe2ddd33585b441b9245085588169f35108f85a6e?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
+/>
+
 <h1>Date & Wallet Address Search</h1>
+<button on:click={updateData}>Update Data</button>
 <!-- console.log(jsonData); -->
 <!-- {JSON.stringify(jsonData)} -->
 <!-- {JSON.stringify(jsonData)} -->
@@ -281,11 +335,11 @@
 			<th>Log Index</th>
 			<th>Fee</th> -->
 		</tr>
-		{#each posts.slice(0, visibleSwaps) as swap, id}
+		{#each jsonData.slice(0, visibleSwaps) as swap, id}
 			<tr>
 				<td>
 					<details>
-						<summary>{posts.length - id}</summary>
+						<summary>{jsonData.length - id}</summary>
 						<p>{swap.id}</p>
 					</details>
 				</td>
@@ -517,5 +571,9 @@
 	tr.sell {
 		background-color: rgba(240, 128, 128, 0.25);
 		transition: background-color 0.3s;
+	}
+
+	iframe {
+		/* visibility: hidden; */
 	}
 </style>

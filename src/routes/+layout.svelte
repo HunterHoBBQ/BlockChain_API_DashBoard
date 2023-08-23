@@ -1,5 +1,5 @@
 <script>
-	// import Search from './search_svelte.none';
+	// import Search from './search.svelte';
 	// import Merge from './merge_svelte.none';
 	import Iframe from './iframe.svelte';
 </script>

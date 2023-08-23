@@ -1,7 +1,7 @@
 <script>
 	// import json_data from '$lib/swaps_all.json';
-	import json1 from '$lib/swaps_1.json';
-	import json2 from '$lib/swaps_2.json';
+	// import json1 from '$lib/swaps_1.json';
+	// import json2 from '$lib/swaps_2.json';
 
 	const mergedSwaps = json1.data.swaps.concat(json2.data.swaps);
 
