@@ -1,5 +1,5 @@
 <!-- <head>
-    <title>AFC Check</title>
+    <title>BlockChain Check</title>
 </head>
     <table>
         <thead>

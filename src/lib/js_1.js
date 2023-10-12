@@ -29,4 +29,4 @@ console.log(wnum1 * wnum2);
 // "fee": 0.3
 // },
 
-// Date    |   Type(Buy/Sell)    |   Price USD   |   Total   |   Price WETH  |    Amount AFC  | Total WETH |  Maker |   Others
+// Date    |   Type(Buy/Sell)    |   Price USD   |   Total   |   Price WETH  |    Amount  | Total WETH |  Maker |   Others

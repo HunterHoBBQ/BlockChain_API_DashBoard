@@ -13,9 +13,9 @@ const c = new Date();
 // Total Supply:101.00B AFC
 // Holders:115
 // Pool created:7/20/2023 19:34
-// 1 WETH:129.14M AFC
+// 1 WETH:129.14M BlockChain
 // https://www.dextools.io/app/en/arbitrum/pair-explorer/0xe2ddd33585b441b9245085588169f35108f85a6e		Website API
-// 0x4568ca00299819998501914690d6010ae48a59ba 	Coin Address	AFC/WETH
+// 0x4568ca00299819998501914690d6010ae48a59ba 	Coin Address	BlockChain/WETH
 // 0xe2ddd33585b441b9245085588169f35108f85a6e	Coin Pair Address
 // https://www.dextools.io/shared/data/swaps?chain=arbitrum&pair=0xe2ddd33585b441b9245085588169f35108f85a6e&ts=1691141879&filter=true
 
