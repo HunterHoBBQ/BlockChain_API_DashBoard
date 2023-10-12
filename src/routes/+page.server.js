@@ -90,7 +90,7 @@ import json1 from '$lib/swaps_1.json';
 export const load = async () => {
 	if (i) {
 		const res1 = await fetch(
-			'https://www.dextools.io/shared/data/swaps?chain=arbitrum&pair=0xe2ddd33585b441b9245085588169f35108f85a6e&filter=true'
+			'https://www.dextools.io/shared/data/swaps?chain=arbitrum&pair=0xc31e54c7a869b9fcbecc14363cf510d1c41fa443&filter=true'
 		);
 		const contentType = res1.headers.get('content-type');
 		// console.log(contentType);
@@ -106,7 +106,7 @@ export const load = async () => {
 			const nextTimestamp = Number(data_1.data.next);
 
 			const res2 = await fetch(
-				`https://www.dextools.io/shared/data/swaps?chain=arbitrum&pair=0xe2ddd33585b441b9245085588169f35108f85a6e&ts=${nextTimestamp}&filter=true`
+				`https://www.dextools.io/shared/data/swaps?chain=arbitrum&pair=0xc31e54c7a869b9fcbecc14363cf510d1c41fa443&ts=${nextTimestamp}&filter=true`
 			);
 			const data_2 = await res2.json();
 			const mergedSwaps = data_1.data.swaps.concat(data_2.data.swaps);
