@@ -288,7 +288,7 @@
 
 <center>
 	<svg>
-		<text x="50%" y="50%" dy=".35em" text-anchor="middle"> AFC Dashboard </text>
+		<text x="50%" y="50%" dy=".35em" text-anchor="middle"> Hunter Dashboard </text>
 	</svg>
 </center>
 
