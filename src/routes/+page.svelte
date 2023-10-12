@@ -5,8 +5,8 @@
 
 	$: posts1 = [];
 	$: jsonData;
-	let jsonData = posts;
 	let Address = '0xc31e54c7a869b9fcbecc14363cf510d1c41fa443';
+	let jsonData = posts;
 
 	async function fetchData() {
 		const res1 = await fetch(
@@ -24,9 +24,7 @@
 			const nextTimestamp = Number(data_1.data.next);
 
 			const res2 = await fetch(
-				'https://www.dextools.io/shared/data/swaps?chain=arbitrum&pair=' +
-					Address +
-					'&ts=${nextTimestamp}&filter=true'
+				`https://www.dextools.io/shared/data/swaps?chain=arbitrum&pair=${Address}&ts=${nextTimestamp}&filter=true`
 			);
 			const data_2 = await res2.json();
 			const mergedSwaps = data_1.data.swaps.concat(data_2.data.swaps);
@@ -41,16 +39,18 @@
 				posts1: uniqueData
 			};
 		}
+		alert(Address);
 	}
 
 	async function updateData() {
-		console.log(Address);
+		// console.log(Address);
 		// Address = "";
 		posts1 = await fetchData();
 		// console.log(posts1);
 		jsonData = posts1.posts1;
 		// console.log(jsonData);
-		console.log('update');
+		console.log('updated');
+		alert('updated');
 	}
 	// const posts = json1.data.swaps;
 	// console.log(posts);
@@ -175,12 +175,8 @@
 		title="DEXTools Trading Chart"
 		width="800"
 		height="400"
-		src="https://www.dextools.io/widget-chart/en/arbitrum/pe-light/'{Address}'?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
+		src={`https://www.dextools.io/widget-chart/en/arbitrum/pe-light/${Address}?theme=light&chartType=2&chartResolution=30&drawingToolbars=false`}
 	/>
-	<!-- <iframe id="dextswap-aggregator-widget"
-    title="DEXTswap Aggregator"
-    width="400" height="420"
-    src="https://www.dextools.io/widget-aggregator/en/swap/arbitrum/0x82af49447d8a07e3bd95bd0d56f35241523fbab1"></iframe> -->
 </center>
 
 <h1>Date & Wallet Address Search</h1>
@@ -188,7 +184,6 @@
 Address:<input type="text" bind:value={Address} placeholder="Enter a new address" />
 <button class="btn-update" on:click={updateData}>Update Data</button>
 <!-- console.log(jsonData); -->
-<!-- {JSON.stringify(jsonData)} -->
 <!-- {JSON.stringify(jsonData)} -->
 
 <div>
@@ -588,9 +583,6 @@ Address:<input type="text" bind:value={Address} placeholder="Enter a new address
 		transition: background-color 0.3s;
 	}
 
-	iframe {
-		/* visibility: hidden; */
-	}
 	.btn-update {
 		/* background-color: #807e7e; */
 		width: 10vw;
